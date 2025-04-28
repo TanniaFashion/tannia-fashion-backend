@@ -27,6 +27,7 @@ public class CartServiceImpl implements CartService {
         return cartRepository.findByUserId(userId).orElseGet(() -> {
             Cart newCart = new Cart();
             newCart.setUserId(userId);
+            newCart.setTotalPrice(BigDecimal.ZERO);
             return cartRepository.save(newCart);
         });
     }
